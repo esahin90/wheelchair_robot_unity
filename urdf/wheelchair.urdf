@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot name="wheelchair">
+
+  <!-- Base link -->
+  <link name="base_link"/>
+
+  <!-- Seat link -->
+  <link name="seat_link"/>
+
+  <joint name="base_to_seat" type="fixed">
+    <parent link="base_link"/>
+    <child link="seat_link"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Head reference link -->
+  <link name="head_ref_link"/>
+
+  <joint name="seat_to_head_ref" type="fixed">
+    <parent link="seat_link"/>
+    <child link="head_ref_link"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Laser link -->
+  <link name="laser_link">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="base_to_laser" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser_link"/>
+    <origin xyz="0.2 0 0.3" rpy="0 0 0"/>
+  </joint>
+
+</robot>
