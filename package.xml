@@ -9,8 +9,29 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <!-- Launch + ROS 2 core -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
   <exec_depend>rclpy</exec_depend>
+ 
+  <!-- Robot description + TF -->
   <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>tf2</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+
+  <!-- Messages used in configs / Nav2 stack -->
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+  <!-- Nav2 stack (used via nav2_bringup launch + params) -->
+  <exec_depend>nav2_bringup</exec_depend>
+  <exec_depend>nav2_bt_navigator</exec_depend>
+  <exec_depend>nav2_controller</exec_depend>
+  <exec_depend>nav2_planner</exec_depend>
+  <exec_depend>nav2_costmap_2d</exec_depend>
+  <exec_depend>nav2_behavior_tree</exec_depend>
+  <exec_depend>nav2_msgs</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

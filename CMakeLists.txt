@@ -4,7 +4,7 @@ project(wheelchair_robot_description)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY urdf launch
+  DIRECTORY bt_xml config launch urdf
   DESTINATION share/${PROJECT_NAME}
 )
 

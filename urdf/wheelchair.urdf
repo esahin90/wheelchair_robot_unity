@@ -2,7 +2,39 @@
 <robot name="wheelchair">
 
   <!-- Base link -->
-  <link name="base_link"/>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="5.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0"
+               iyy="0.1" iyz="0.0"
+               izz="0.1"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.3 0.2"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.3 0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Base footprint for 2D -->
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
 
   <!-- Seat link -->
   <link name="seat_link"/>
@@ -22,19 +54,23 @@
     <origin xyz="0 0 0.3" rpy="0 0 0"/>
   </joint>
 
-  <!-- Laser link -->
-  <link name="laser_link">
+  <!-- Lidar link -->
+  <link name="base_scan">
     <visual>
+      <origin xyz="0.2 0 0.15" rpy="0 0 0"/>
       <geometry>
-        <box size="0.05 0.05 0.05"/>
+        <cylinder length="0.05" radius="0.05"/>
       </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1.0"/>
+      </material>
     </visual>
   </link>
 
-  <joint name="base_to_laser" type="fixed">
+  <joint name="base_link_to_laser" type="fixed">
     <parent link="base_link"/>
-    <child link="laser_link"/>
-    <origin xyz="0.2 0 0.3" rpy="0 0 0"/>
+    <child link="base_scan"/>
+    <origin xyz="0.2 0 0.15" rpy="0 0 0"/>
   </joint>
 
 </robot>
