@@ -41,6 +41,7 @@ class PoseToOdomTF(Node):
         odom.header.frame_id = self.odom_frame
         odom.child_frame_id = self.base_frame
         odom.pose.pose = msg.pose
+        odom.pose.pose.position.z = 0.0 # ignore z-axis for navigation
 
         # Simple linear velocity estimate
         if self.last_pose is not None and self.last_time is not None:
@@ -64,7 +65,7 @@ class PoseToOdomTF(Node):
         t.child_frame_id = self.base_frame
         t.transform.translation.x = msg.pose.position.x
         t.transform.translation.y = msg.pose.position.y
-        t.transform.translation.z = msg.pose.position.z
+        t.transform.translation.z = 0.0 # ignore z-axis for navigation
         t.transform.rotation = msg.pose.orientation
 
         self.tf_broadcaster.sendTransform(t)

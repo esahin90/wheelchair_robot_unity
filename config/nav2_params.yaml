@@ -3,7 +3,7 @@ bt_navigator:
     use_sim_time: true
     global_frame: odom
     robot_base_frame: base_link
-    odom_topic: odom
+    odom_topic: /odom
     transform_tolerance: 0.2
     default_bt_xml_filename: "$(find-pkg-share wheelchair_robot_description)bt_xml/local_nav.xml"
 
@@ -119,7 +119,7 @@ velocity_smoother:
     min_velocity: [-0.5, 0.0, -1.0]
     max_accel: [0.5, 0.0, 1.0]
     max_decel: [-0.5, 0.0, -1.0]
-    odom_topic: "odom"
+    odom_topic: "/odom"
     robot_base_frame: "base_link"
 
 collision_monitor:
@@ -135,12 +135,12 @@ collision_monitor:
       action_type: "stop"
       min_points: 4
       visualize: True
-      polygon_pub_topic: "polygon_stop"
+      polygon_pub_topic: "/polygon_stop"
       enabled: True
     observation_sources: ["scan"]
     scan:
       type: "scan"
-      topic: "scan"
+      topic: "/scan"
       enabled: True
 
 route_server:
@@ -173,7 +173,7 @@ local_costmap:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         observation_sources: scan
         scan:
-          topic: scan
+          topic: /scan
           max_obstacle_height: 1.0
           clearing: true
           marking: true
@@ -214,7 +214,7 @@ global_costmap:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         observation_sources: scan
         scan:
-          topic: scan
+          topic: /scan
           max_obstacle_height: 1.0
           clearing: true
           marking: true
