@@ -3,10 +3,11 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_xml.launch_description_sources import XMLLaunchDescriptionSource
 
 
 def generate_launch_description():
@@ -65,6 +66,20 @@ def generate_launch_description():
                 'use_sim_time': use_sim_time,
                 'params_file': params_file,
                 'bt_xml_filename': bt_xml
+            }.items()
+        ),
+
+        IncludeLaunchDescription(
+            XMLLaunchDescriptionSource(
+                PathJoinSubstitution([
+                    FindPackageShare('rosbridge_server'),
+                    'launch',
+                    'rosbridge_websocket_launch.xml'
+                ])
+            ),
+            launch_arguments={
+                'port': '9090',          # optional: default is 9090
+                'address': '0.0.0.0'     # optional: allow Unity to connect remotely
             }.items()
         )
     ])
