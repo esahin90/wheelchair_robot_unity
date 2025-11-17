@@ -56,6 +56,19 @@ def generate_launch_description():
             }]
         ),
 
+        Node(
+            package='wheelchair_robot_description',
+            executable='pose_to_odom_tf.py',
+            name='pose_to_odom_tf',
+            output='screen',
+            parameters=[{
+                'pose_topic': '/unity_pose',
+                'odom_topic': '/odom',
+                'odom_frame': 'odom',
+                'base_frame': 'base_link',
+            }]
+        ),
+
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(PathJoinSubstitution([
                 pkg_share,
