@@ -14,6 +14,7 @@ install(
 
 install(PROGRAMS
   scripts/pose_to_odom_tf.py
+  scripts/unity_goal_bridge.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

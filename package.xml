@@ -26,13 +26,14 @@
   <exec_depend>sensor_msgs</exec_depend>
 
   <!-- Nav2 stack (used via nav2_bringup launch + params) -->
+  <exec_depend>nav2_behavior_tree</exec_depend>
   <exec_depend>nav2_bringup</exec_depend>
   <exec_depend>nav2_bt_navigator</exec_depend>
   <exec_depend>nav2_controller</exec_depend>
-  <exec_depend>nav2_planner</exec_depend>
   <exec_depend>nav2_costmap_2d</exec_depend>
-  <exec_depend>nav2_behavior_tree</exec_depend>
   <exec_depend>nav2_msgs</exec_depend>
+  <exec_depend>nav2_planner</exec_depend>
+  <exec_depend>nav2_simple_commander</exec_depend>
 
   <!-- ROS bridge server -->
   <exec_depend>rosbridge_server</exec_depend>

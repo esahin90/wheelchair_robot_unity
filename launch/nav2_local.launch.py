@@ -62,10 +62,20 @@ def generate_launch_description():
             name='pose_to_odom_tf',
             output='screen',
             parameters=[{
-                'pose_topic': '/unity_pose',
+                'pose_topic': '/unity/robot_pose',
                 'odom_topic': '/odom',
                 'odom_frame': 'odom',
                 'base_frame': 'base_link',
+            }]
+        ),
+
+        Node(
+            package='wheelchair_robot_description',
+            executable='unity_goal_bridge.py',
+            name='unity_goal_bridge',
+            output='screen',
+            parameters=[{
+                'goal_topic': '/unity/goal_pose',
             }]
         ),
 

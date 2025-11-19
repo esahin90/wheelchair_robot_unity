@@ -10,7 +10,7 @@ class PoseToOdomTF(Node):
     def __init__(self):
         super().__init__("pose_to_odom_tf")
 
-        self.declare_parameter("pose_topic", "/unity_pose")
+        self.declare_parameter("pose_topic", "/unity/robot_pose")
         self.declare_parameter("odom_topic", "/odom")
         self.declare_parameter("odom_frame", "odom")
         self.declare_parameter("base_frame", "base_link")
