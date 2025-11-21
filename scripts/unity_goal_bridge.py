@@ -21,7 +21,7 @@ class UnityGoalBridge(Node):
         )
 
     def goal_callback(self, msg: PoseStamped):
-        self.nav.waitUntilNav2Active()
+        #self.nav.waitUntilNav2Active()
         self.nav.goToPose(msg)
 
         result = self.nav.getResult()
