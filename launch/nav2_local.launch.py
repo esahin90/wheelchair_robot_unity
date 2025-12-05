@@ -11,7 +11,6 @@ from launch_xml.launch_description_sources import XMLLaunchDescriptionSource
 
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time')
     params_file = LaunchConfiguration('params_file')
     bt_xml = LaunchConfiguration('bt_xml')
 
@@ -22,11 +21,6 @@ def generate_launch_description():
         robot_description = infp.read()
 
     return LaunchDescription([
-        DeclareLaunchArgument(
-            'use_sim_time',
-            default_value='true',
-            description='Use simulation time'),
-
         DeclareLaunchArgument(
             'params_file',
             default_value=PathJoinSubstitution([
@@ -51,7 +45,6 @@ def generate_launch_description():
             name='robot_state_publisher',
             output='screen',
             parameters=[{
-                'use_sim_time': use_sim_time,
                 'robot_description': robot_description
             }]
         ),
@@ -86,7 +79,6 @@ def generate_launch_description():
                 'navigation_launch.py'
             ])),
             launch_arguments={
-                'use_sim_time': use_sim_time,
                 'params_file': params_file,
                 'bt_xml_filename': bt_xml
             }.items()
