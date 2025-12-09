@@ -72,6 +72,16 @@ def generate_launch_description():
             }]
         ),
 
+        Node(
+            package='wheelchair_robot_description',
+            executable='laser_scan_mirror.py',
+            name='laser_scan_mirror',
+            parameters=[
+                {'input_topic': '/unity/laser_scan'},
+                {'output_topic': '/scan'},
+            ]
+        ),
+
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(PathJoinSubstitution([
                 pkg_share,

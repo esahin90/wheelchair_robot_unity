@@ -13,6 +13,7 @@ install(
 )
 
 install(PROGRAMS
+  scripts/laser_scan_mirror.py
   scripts/pose_to_odom_tf.py
   scripts/unity_goal_bridge.py
   DESTINATION lib/${PROJECT_NAME}
