@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(wheelchair_robot_description)
+project(wheelchair_robot_unity)
 
 find_package(ament_cmake REQUIRED)
 find_package(rclpy REQUIRED)

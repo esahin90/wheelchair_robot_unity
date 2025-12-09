@@ -8,7 +8,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
-    pkg_share = get_package_share_directory('wheelchair_robot_description')
+    pkg_share = get_package_share_directory('wheelchair_robot_unity')
     urdf_path = os.path.join(pkg_share, 'urdf', 'wheelchair.urdf')
 
     with open(urdf_path, 'r') as infp:

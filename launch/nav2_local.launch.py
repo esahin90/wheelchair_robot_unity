@@ -14,8 +14,8 @@ def generate_launch_description():
     params_file = LaunchConfiguration('params_file')
     bt_xml = LaunchConfiguration('bt_xml')
 
-    pkg_share = FindPackageShare('wheelchair_robot_description')
-    urdf_path = os.path.join(get_package_share_directory('wheelchair_robot_description'), 'urdf', 'wheelchair.urdf')
+    pkg_share = FindPackageShare('wheelchair_robot_unity')
+    urdf_path = os.path.join(get_package_share_directory('wheelchair_robot_unity'), 'urdf', 'wheelchair.urdf')
 
     with open(urdf_path, 'r') as infp:
         robot_description = infp.read()
@@ -50,7 +50,7 @@ def generate_launch_description():
         ),
 
         Node(
-            package='wheelchair_robot_description',
+            package='wheelchair_robot_unity',
             executable='pose_to_odom_tf.py',
             name='pose_to_odom_tf',
             output='screen',
@@ -63,7 +63,7 @@ def generate_launch_description():
         ),
 
         Node(
-            package='wheelchair_robot_description',
+            package='wheelchair_robot_unity',
             executable='unity_goal_bridge.py',
             name='unity_goal_bridge',
             output='screen',
@@ -73,7 +73,7 @@ def generate_launch_description():
         ),
 
         Node(
-            package='wheelchair_robot_description',
+            package='wheelchair_robot_unity',
             executable='laser_scan_mirror.py',
             name='laser_scan_mirror',
             parameters=[
