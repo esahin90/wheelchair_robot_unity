@@ -44,14 +44,10 @@ def generate_launch_description():
         'controller_server',
         'smoother_server',
         'planner_server',
-        #'route_server',
         'behavior_server',
         'velocity_smoother',
         #'collision_monitor',
         'bt_navigator',
-        #'waypoint_follower',
-        # Deactivate docking_server for wheelchair simulation
-        #'docking_server',
     ]
 
     # Map fully qualified names to relative ones so the node's namespace can be prepended.
@@ -159,17 +155,6 @@ def generate_launch_description():
                 arguments=['--ros-args', '--log-level', log_level],
                 remappings=remappings,
             ),
-            #Node(
-            #    package='nav2_route',
-            #    executable='route_server',
-            #    name='route_server',
-            #    output='screen',
-            #    respawn=use_respawn,
-            #    respawn_delay=2.0,
-            #    parameters=[configured_params],
-            #    arguments=['--ros-args', '--log-level', log_level],
-            #    remappings=remappings,
-            #),
             Node(
                 package='nav2_behaviors',
                 executable='behavior_server',
@@ -192,17 +177,6 @@ def generate_launch_description():
                 arguments=['--ros-args', '--log-level', log_level],
                 remappings=remappings,
             ),
-            #Node(
-            #    package='nav2_waypoint_follower',
-            #    executable='waypoint_follower',
-            #    name='waypoint_follower',
-            #    output='screen',
-            #    respawn=use_respawn,
-            #    respawn_delay=2.0,
-            #    parameters=[configured_params],
-            #    arguments=['--ros-args', '--log-level', log_level],
-            #    remappings=remappings,
-            #),
             Node(
                 package='nav2_velocity_smoother',
                 executable='velocity_smoother',
@@ -219,18 +193,6 @@ def generate_launch_description():
             #    package='nav2_collision_monitor',
             #    executable='collision_monitor',
             #    name='collision_monitor',
-            #    output='screen',
-            #    respawn=use_respawn,
-            #    respawn_delay=2.0,
-            #    parameters=[configured_params],
-            #    arguments=['--ros-args', '--log-level', log_level],
-            #    remappings=remappings,
-            #),
-            # Deactivate docking_server for wheelchair simulation
-            #Node(
-            #    package='opennav_docking',
-            #    executable='opennav_docking',
-            #    name='docking_server',
             #    output='screen',
             #    respawn=use_respawn,
             #    respawn_delay=2.0,
@@ -277,13 +239,6 @@ def generate_launch_description():
                         parameters=[configured_params],
                         remappings=remappings,
                     ),
-                    #ComposableNode(
-                    #    package='nav2_route',
-                    #    plugin='nav2_route::RouteServer',
-                    #    name='route_server',
-                    #    parameters=[configured_params],
-                    #    remappings=remappings,
-                    #),
                     ComposableNode(
                         package='nav2_behaviors',
                         plugin='behavior_server::BehaviorServer',
@@ -298,13 +253,6 @@ def generate_launch_description():
                         parameters=[configured_params],
                         remappings=remappings,
                     ),
-                    #ComposableNode(
-                    #    package='nav2_waypoint_follower',
-                    #    plugin='nav2_waypoint_follower::WaypointFollower',
-                    #    name='waypoint_follower',
-                    #    parameters=[configured_params],
-                    #    remappings=remappings,
-                    #),
                     ComposableNode(
                         package='nav2_velocity_smoother',
                         plugin='nav2_velocity_smoother::VelocitySmoother',
@@ -317,14 +265,6 @@ def generate_launch_description():
                     #    package='nav2_collision_monitor',
                     #    plugin='nav2_collision_monitor::CollisionMonitor',
                     #    name='collision_monitor',
-                    #    parameters=[configured_params],
-                    #    remappings=remappings,
-                    #),
-                    # Deactivate docking_server for wheelchair simulation
-                    #ComposableNode(
-                    #    package='opennav_docking',
-                    #    plugin='opennav_docking::DockingServer',
-                    #    name='docking_server',
                     #    parameters=[configured_params],
                     #    remappings=remappings,
                     #),
